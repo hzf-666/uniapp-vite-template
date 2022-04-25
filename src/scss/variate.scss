@@ -1,0 +1,10 @@
+@use "sass:math";
+
+$standardWidth: 750;
+
+@function rel($num) {
+  @return math.div($num * $standardWidth, 750) * 1rpx;
+}
+
+$colorText: #666;
+$fontSize: rel(28);

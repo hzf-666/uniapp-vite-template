@@ -1,0 +1,39 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: hzf
+ * @Date: 2022-04-21 11:35:39
+ * @LastEditors: hzf
+ * @LastEditTime: 2022-04-25 23:10:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="static/favicon.ico" />
+    <script>
+      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'));
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+        (coverSupport ? ', viewport-fit=cover' : '') + '" />'
+      );
+      function setDomTitle() {
+        document.title = '\u200E';
+      }
+      window.onload = function() {
+        const backBtn = document.querySelector('.uni-page-head-btn');
+        if (backBtn) {
+          backBtn.onclick = setDomTitle;
+        }
+      };
+      window.addEventListener('DOMContentLoaded', setDomTitle);
+      window.addEventListener('hashchange', setDomTitle);
+    </script>
+    <!--preload-links-->
+    <!--app-context-->
+  </head>
+  <body>
+    <div id="app"><!--app-html--></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

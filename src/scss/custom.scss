@@ -1,0 +1,160 @@
+:not(not) {
+  box-sizing: border-box;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+}
+
+body {
+  height: 100%;
+  font-size: $fontSize;
+  color: $colorText;
+}
+
+page {
+  height: 100%;
+  font-size: $fontSize;
+  color: $colorText;
+}
+
+/*
+* flex-box 常用样式
+*/
+.d_f {
+  display: flex;
+}
+
+.d_if {
+  display: inline-flex;
+}
+
+.fd_r {
+  flex-direction: row;
+}
+
+.fd_rr {
+  flex-direction: row-reverse;
+}
+
+.fd_c {
+  flex-direction: column;
+}
+
+.fd_cr {
+  flex-direction: column-reverse;
+}
+
+.fw_n {
+  flex-wrap: nowrap;
+}
+
+.fw_w {
+  flex-wrap: wrap;
+}
+
+.fw_wr {
+  flex-wrap: wrap-reverse;
+}
+
+.jc_fs {
+  justify-content: flex-start;
+}
+
+.jc_c {
+  justify-content: center;
+}
+
+.jc_sa {
+  justify-content: space-around;
+}
+
+.jc_sb {
+  justify-content: space-between;
+}
+
+.jc_fe {
+  justify-content: flex-end;
+}
+
+.ai_s {
+  align-items: stretch;
+}
+
+.ai_b {
+  align-items: baseline;
+}
+
+.ai_fs {
+  align-items: flex-start;
+}
+
+.ai_c {
+  align-items: center;
+}
+
+.ai_fe {
+  align-items: flex-end;
+}
+
+.as_s {
+  align-items: stretch;
+}
+
+.as_b {
+  align-items: baseline;
+}
+
+.as_fs {
+  align-items: flex-start;
+}
+
+.as_c {
+  align-items: center;
+}
+
+.as_fe {
+  align-items: flex-end;
+}
+
+.ac_fs {
+  align-content: flex-start;
+}
+
+.ac_c {
+  align-content: center;
+}
+
+.ac_sb {
+  align-content: space-between;
+}
+
+.ac_sa {
+  align-content: space-around;
+}
+
+.ac_fe {
+  align-content: flex-end;
+}
+
+.f_01a {
+  flex: 0 1 auto;
+}
+
+.f_10a {
+  flex: 1 0 auto;
+}
+
+.f_11a {
+  flex: 1 1 auto;
+}
+
+.f_00a {
+  flex: 0 0 auto;
+}
+
+/*
+* 单行文本超出省略
+*/
+.text_els {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,51 @@
+{
+	"globalStyle": {
+		"navigationBarTextStyle": "black", // 导航栏标题颜色及状态栏前景颜色，仅支持 black/white
+		"navigationBarTitleText": "\u200E", // 导航栏标题文字内容
+		"navigationBarBackgroundColor": "#F8F8F8", // 导航栏背景颜色（同状态栏背景色）
+		"backgroundColor": "#F8F8F8",
+		"usingComponents": { // 使用组件
+		},
+		"mp-weixin": { // 设置编译到 mp-weixin 平台的特定样式
+			"backgroundColor": "#F8F8F8", // 下拉显示出来的窗口的背景色
+			"backgroundTextStyle": "dark", // 下拉 loading 的样式，仅支持 dark / light
+			// "renderingMode": "seperated", // 同层渲染，webrtc(实时音视频) 无法正常时尝试配置 seperated 强制关掉同层
+			"enablePullDownRefresh": false // 是否开启下拉刷新
+		}
+	},
+	"tabBar": {
+    "color": "#7A7E83", // tab 上的文字默认颜色
+    "selectedColor": "#1296db", // tab 上的文字选中时的颜色
+    "borderStyle": "black", // tabbar 上边框的颜色，可选值 black/white
+    "backgroundColor": "#ffffff", // tab 的背景色
+    "position": "bottom", // 可选值 bottom、top，top 值仅微信小程序支持
+    "list": [ // tab 的列表，最少2个、最多5个 tab
+      {
+        "pagePath": "pages/Login/index", // 页面路径，必须在 pages 中先定义
+        "iconPath": "static/tabBar/home.png", // 图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px，当 postion 为 top 时，此参数无效，不支持网络图片，不支持字体图标
+        "selectedIconPath": "static/tabBar/home_selected.png", // 选中时的图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px ，当 postion 为 top 时，此参数无效
+        "text": "登录" // tab 上按钮文字，在 App 和 H5 平台为非必填。例如中间可放一个没有文字的+号图标
+      },
+			{
+        "pagePath": "pages/Home/index",
+        "iconPath": "static/tabBar/user.png",
+        "selectedIconPath": "static/tabBar/user_selected.png",
+        "text": "首页"
+			}
+		]
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/Login/index",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/Home/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		}
+	]
+}
