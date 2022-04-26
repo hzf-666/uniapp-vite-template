@@ -4,12 +4,13 @@
  * @Author: hzf
  * @Date: 2022-04-21 11:35:39
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 22:25:22
+ * @LastEditTime: 2022-04-26 20:47:45
  */
 import { defineConfig } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
 import AutoImport from 'unplugin-auto-import/vite';
 import VueComponents from 'unplugin-vue-components/vite';
+import globalData from './src/global/data.js';
 
 const path = require('path'), resolve = dir => path.resolve(__dirname, dir);
 
@@ -18,6 +19,9 @@ export default ({ mode }) => {
   const dev = mode === 'development';
 
   return defineConfig({
+    server: {
+      port: 6000,
+    },
     base: dev ? '/' : '/h5/',
     resolve: {
       alias: {
@@ -35,11 +39,13 @@ export default ({ mode }) => {
         imports: ['vue', 'vue-router'],
         resolvers: [
           name => {
-            switch (name) {
-              case '$g':
-                return '@/global/data.js';
-              case '$http':
-                return '@/http/index.js';
+            for (const _name of globalData) {
+              if (name === '$' + _name) {
+                return {
+                  from: '@/global',
+                  name: _name,
+                };
+              }
             }
           },
         ],

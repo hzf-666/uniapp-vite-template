@@ -4,12 +4,12 @@
  * @Author: hzf
  * @Date: 2022-04-08 11:17:53
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 13:48:25
+ * @LastEditTime: 2022-04-26 20:50:14
  */
 const whiteList = [];
 
-const mpLoginMax = 3, // 小程序登录获取code最大次数
-  loginMax = 2, // 调用登录接口获取token最大次数
+const mpLoginMax = 5, // 小程序登录获取code最大次数
+  loginMax = 5, // 调用登录接口获取token最大次数
   loginFlags = {
     isLock: false,
     failed: false,
@@ -18,7 +18,7 @@ const mpLoginMax = 3, // 小程序登录获取code最大次数
 
 export default function(flyio, flyioRequest) {
   flyio.interceptors.request.use(req => {
-    const token = $g.caches().get('token');
+    const token = $caches().get('token');
     if (token && !whiteList.includes(req.url)) { // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
       req.headers.Authorization = token;
     }
@@ -54,7 +54,7 @@ export default function(flyio, flyioRequest) {
       //       }
       //     };
       //   await waitLocking();
-      //   if ($g.caches().get('token')) res = flyio.request(lockedHttps[httpKey]);
+      //   if ($caches().get('token')) res = flyio.request(lockedHttps[httpKey]);
       //   delete lockedHttps[httpKey];
       //   return res;
       // }
@@ -153,7 +153,7 @@ export default function(flyio, flyioRequest) {
       //       break;
       //     }
       //   }
-      //   if (token) $g.caches().set('token', token);
+      //   if (token) $caches().set('token', token);
       // } else {
       //   uni.showToast({ title: `静默登录已达${ mpLoginMax }次，请重新进入小程序！`, icon: 'none', duration: 2500 });
       //   res = await new Promise((resolve) => {
@@ -164,7 +164,7 @@ export default function(flyio, flyioRequest) {
       // }
       // loginFlags.isLock = false;
       // flyio.unlock();
-      // if ($g.caches().get('token')) {
+      // if ($caches().get('token')) {
       //   res = await flyio.request(res.request);
       // } else {
       //   loginFlags.failed = true;

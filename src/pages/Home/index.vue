@@ -4,13 +4,11 @@
  * @Author: hzf
  * @Date: 2022-04-21 11:35:39
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 22:39:27
+ * @LastEditTime: 2022-04-26 19:55:44
 -->
-<script setup>
-//
-</script>
-
 <script>
+const count = computed(() => $store.get('count'));
+
 export default {
   name: 'Home',
   onLoad() {},
@@ -21,8 +19,13 @@ export default {
 };
 </script>
 
+<script setup>
+//
+</script>
+
 <template>
   <Layout>
+    {{ count }}
     首页
   </Layout>
 </template>

@@ -4,28 +4,15 @@
  * @Author: hzf
  * @Date: 2022-04-21 11:35:39
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 23:11:53
+ * @LastEditTime: 2022-04-26 17:51:08
 -->
-<script setup>
-//
-</script>
-
 <script>
 import { getCaptcha, uploadFile } from '@/api';
 
-export default {
-  name: 'Login',
-  onLoad() {},
-  onShow() {
-    doGetCaptcha();
-  },
-  onReady() {},
-  onHide() {},
-  onUnload() {},
-};
-
+const [loadingCaptcha, toGetCaptcha] = $useApiLoading(getCaptcha);
+const count = computed(() => $store.get('count'));
 const doGetCaptcha = function() {
-    getCaptcha().then(res => {
+    toGetCaptcha().then(res => {
       console.log(res);
     });
   },
@@ -46,12 +33,30 @@ const doGetCaptcha = function() {
       }
     });
   };
+
+export default {
+  name: 'Login',
+  onLoad() {},
+  onShow() {
+    doGetCaptcha();
+  },
+  onReady() {},
+  onHide() {},
+  onUnload() {},
+};
+</script>
+
+<script setup>
+//
 </script>
 
 <template>
   <Layout>
+    {{ loadingCaptcha }}
+    {{ count }}
     登录页面
     <button @click="upload">上传</button>
+    <button @click="$store.set('count', count + 1)">计数</button>
   </Layout>
 </template>
 

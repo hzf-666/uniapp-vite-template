@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-04-08 12:07:28
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 17:16:46
+ * @LastEditTime: 2022-04-26 10:07:07
  */
 const baseUrl = '/api/userSystem/common';
 
@@ -26,8 +26,8 @@ export async function uploadFile(options = {}) { // 上传文件
     timeout: 20000,
     ...options,
   };
-  const token = $g.caches().get('token'),
-    _options = $g.deepCopy(options);
+  const token = $caches().get('token'),
+    _options = $deepCopy(options);
 
   ['showTip', 'successTip', 'failTip'].forEach(k => {
     delete _options[k];

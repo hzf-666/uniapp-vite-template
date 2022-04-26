@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-04-08 11:17:04
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 17:04:38
+ * @LastEditTime: 2022-04-26 15:18:21
  */
 import Fly from '@p/flyio.js';
 import interceptor from './interceptor.js';
@@ -47,7 +47,7 @@ async function request(method, url, options = {}) {
     timeout: 20000,
     ...options,
   };
-  const _options = $g.deepCopy(options);
+  const _options = $deepCopy(options);
 
   ['showTip', 'successTip', 'failTip'].forEach(k => {
     delete _options[k];
