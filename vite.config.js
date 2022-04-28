@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-04-21 11:35:39
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-26 20:47:45
+ * @LastEditTime: 2022-04-28 09:33:02
  */
 import { defineConfig } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
@@ -36,7 +36,9 @@ export default ({ mode }) => {
     plugins: [
       uni(),
       AutoImport({
-        imports: ['vue', 'vue-router'],
+        imports: ['vue', 'vue-router', {
+          vue: ['defineEmits', 'defineExpose', 'defineProps', 'defineCustomElement'],
+        }],
         resolvers: [
           name => {
             for (const _name of globalData) {
