@@ -21,12 +21,12 @@ const doGetCaptcha = function() {
       success({ tempFilePaths }) {
         $http.all(tempFilePaths.map(filePath => {
           return uploadFile({
-            showTip: false,
+            message: false,
             url: '/api/userSystem/common/file',
             filePath,
           });
         }), {
-          successTip: '上传成功！',
+          successMsg: '上传成功！',
         }).then(res => {
           console.log(res);
         });

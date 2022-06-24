@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-03-29 13:43:53
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-25 22:07:02
+ * @LastEditTime: 2022-06-24 14:19:46
  */
 module.exports = {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-recess-order'],
@@ -29,9 +29,9 @@ module.exports = {
       },
     ],
     'scss/dollar-variable-pattern': [
-      '^([a-z][a-z0-9]*)(([A-Z]+|-)[a-z0-9]+)*$',
+      '^([a-z][a-z0-9]*)([A-Z]+[a-z0-9]+)*$',
       {
-        message: 'Expected variable to be lowerCamelCase or kebab-case',
+        message: 'Expected variable to be lowerCamelCase',
       },
     ],
     'no-empty-source': null,
@@ -40,11 +40,17 @@ module.exports = {
     'selector-pseudo-class-no-unknown': [true, {
       ignorePseudoClasses: ['export', 'deep'],
     }],
-    'unit-no-unknown': [true, {
-      ignoreUnits: ['rpx'],
+    'property-no-unknown': [true, {
+      ignoreSelectors: [':export'],
     }],
-    'selector-type-no-unknown': [true, {
-      ignoreTypes: ['page'],
+    'property-case': ['lower', {
+      ignoreSelectors: [':export'],
+    }],
+    'value-no-vendor-prefix': [true, {
+      ignoreValues: ['box'],
+    }],
+    'value-keyword-case': ['lower', {
+      ignoreFunctions: ['v-bind'],
     }],
   }
 };

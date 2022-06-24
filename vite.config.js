@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-04-21 11:35:39
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-28 09:33:02
+ * @LastEditTime: 2022-06-24 14:32:02
  */
 import { defineConfig } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
@@ -20,7 +20,7 @@ export default ({ mode }) => {
 
   return defineConfig({
     server: {
-      port: 6000,
+      host: '0.0.0.0',
     },
     base: dev ? '/' : '/h5/',
     resolve: {
@@ -28,7 +28,6 @@ export default ({ mode }) => {
         '@': resolve('src'),
         '@a': resolve('src/assets'),
         '@c': resolve('src/components'),
-        '@h': resolve('src/hooks'),
         '@p': resolve('src/plugins'),
         '@u': resolve('src/utils'),
       }
@@ -48,6 +47,12 @@ export default ({ mode }) => {
                   name: _name,
                 };
               }
+            }
+            if (name.startsWith('$use')) {
+              return {
+                from: '@/hooks',
+                name: name.replace('$', ''),
+              };
             }
           },
         ],

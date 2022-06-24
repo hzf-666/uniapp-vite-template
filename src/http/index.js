@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-04-08 11:17:04
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-26 15:18:21
+ * @LastEditTime: 2022-06-24 14:34:27
  */
 import Fly from '@p/flyio.js';
 import interceptor from './interceptor.js';
@@ -41,15 +41,15 @@ async function request(method, url, options = {}) {
   flyio.config.baseURL = setProxy(url);
 
   options = {
-    showTip: true,
-    successTip: '',
-    failTip: '',
+    message: true,
+    successMsg: '',
+    failMsg: '',
     timeout: 20000,
     ...options,
   };
   const _options = $deepCopy(options);
 
-  ['showTip', 'successTip', 'failTip'].forEach(k => {
+  ['message', 'successMsg', 'failMsg'].forEach(k => {
     delete _options[k];
   });
 
@@ -66,10 +66,10 @@ async function request(method, url, options = {}) {
     const data = res.data;
     if (data.code == 200) {
       data.type = 'success';
-      options.successTip && (data.message = options.successTip);
+      options.successMsg && (data.message = options.successMsg);
     } else {
       data.type = 'fail';
-      options.failTip && (data.message = options.failTip);
+      options.failMsg && (data.message = options.failMsg);
     }
     if (data.code == 401) {
       // 用户没有登录
@@ -102,11 +102,11 @@ async function request(method, url, options = {}) {
     options.setLoading(false);
   }
 
-  options.showTip && tip(result);
+  options.message && showMsg(result);
   return result;
 }
 
-function tip(res, options = {}) {
+function showMsg(res, options = {}) {
   if (res && res.message) {
     uni.showToast({
       title: res.message,
@@ -117,9 +117,9 @@ function tip(res, options = {}) {
 }
 
 function all(arr, {
-  showTip = true,
-  successTip = '',
-  failTip = '',
+  message = true,
+  successMsg = '',
+  failMsg = '',
 } = {}) {
   return new Promise(resolve => {
     const result = {
@@ -145,11 +145,11 @@ function all(arr, {
           }
         }
         if (result.code == 200) {
-          successTip && (result.message = successTip);
+          successMsg && (result.message = successMsg);
         } else {
-          failTip && (result.message = failTip);
+          failMsg && (result.message = failMsg);
         }
-        showTip && tip(result);
+        message && showMsg(result);
         resolve(result);
       });
     } else {
@@ -175,6 +175,6 @@ export default {
     return request('delete', url, options);
   },
   request,
-  tip,
+  showMsg,
   all,
 };

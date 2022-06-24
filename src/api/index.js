@@ -4,14 +4,14 @@
  * @Author: hzf
  * @Date: 2022-04-08 12:07:28
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-26 10:07:07
+ * @LastEditTime: 2022-06-24 14:36:30
  */
 const baseUrl = '/api/userSystem/common';
 
 export async function getCaptcha(options = {}) { // 获取验证码
   options = {
-    successTip: '',
-    failTip: '',
+    successMsg: '',
+    failMsg: '',
     ...options,
   };
   return await $http.get(`${ baseUrl }/captcha`, options);
@@ -19,9 +19,9 @@ export async function getCaptcha(options = {}) { // 获取验证码
 
 export async function uploadFile(options = {}) { // 上传文件
   options = {
-    showTip: true,
-    successTip: '',
-    failTip: '',
+    message: true,
+    successMsg: '',
+    failMsg: '',
     name: 'file',
     timeout: 20000,
     ...options,
@@ -29,7 +29,7 @@ export async function uploadFile(options = {}) { // 上传文件
   const token = $caches().get('token'),
     _options = $deepCopy(options);
 
-  ['showTip', 'successTip', 'failTip'].forEach(k => {
+  ['message', 'successMsg', 'failMsg'].forEach(k => {
     delete _options[k];
   });
 
@@ -64,11 +64,11 @@ export async function uploadFile(options = {}) { // 上传文件
       },
       complete() {
         if (result.code == 200) {
-          options.successTip && (result.message = options.successTip);
+          options.successMsg && (result.message = options.successMsg);
         } else {
-          options.failTip && (result.message = options.failTip);
+          options.failMsg && (result.message = options.failMsg);
         }
-        options.showTip && $http.tip(result);
+        options.message && $http.showMsg(result);
         resolve(result);
       },
     });

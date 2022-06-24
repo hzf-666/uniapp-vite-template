@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-04-02 17:18:09
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-21 20:27:54
+ * @LastEditTime: 2022-06-24 14:32:42
  */
 export function typeOf(target) {
   const getProtoStr = Object.prototype.toString,
@@ -46,7 +46,7 @@ export function dateFormat(fmt, d) {
   const date = d ? new Date(d) : new Date(),
     o = {
       'M+': date.getMonth() + 1, // 月份
-      'd+': date.getDate(), // 日
+      'D+': date.getDate(), // 日
       'H+': date.getHours(), // 小时，24小时制
       'h+': date.getHours() > 12 ? date.getHours() - 12 : date.getHours(), // 小时，12小时制
       'm+': date.getMinutes(), // 分
@@ -54,7 +54,7 @@ export function dateFormat(fmt, d) {
       'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
       S: date.getMilliseconds() // 毫秒
     },
-    y = /(y+)/g,
+    y = /(Y+)/g,
     w = ['日', '一', '二', '三', '四', '五', '六'],
     W = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   if (y.test(fmt)) {
@@ -75,12 +75,12 @@ export function dateFormat(fmt, d) {
   return fmt;
 }
 
-export async function toDuration(p, second = 0) {
+export async function toDuration(p, delay = 0) {
   const results = await Promise.all([p,
     new Promise(resolve => {
       setTimeout(() => {
         resolve();
-      }, second);
+      }, delay);
     }),
   ]);
   return results[0];

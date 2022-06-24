@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-03-29 17:18:52
  * @LastEditors: hzf
- * @LastEditTime: 2022-04-21 19:13:52
+ * @LastEditTime: 2022-06-24 14:19:32
  */
 module.exports = {
   root: true,
@@ -51,6 +51,8 @@ module.exports = {
     'vue/no-multiple-template-root': 'off', // 不允许向模板添加多个根节点
     'vue/no-mutating-props': 'off', // 禁止组件 props 的突变
     'vue/multi-word-component-names': 'off', // 要求组件名称始终为多字
+    'vue/no-v-for-template-key': 'off', // 禁用key属性<template v-for>
+    'vue/no-v-model-argument': 'off', // 禁止v-model在自定义组件中添加参数
     indent: ['error', 2, { // js 代码缩进
       SwitchCase: 1,
       VariableDeclarator: { var: 1, let: 1, const: 1 }
@@ -163,5 +165,6 @@ module.exports = {
       objectsInObjects: false,
     }],
     'array-bracket-spacing': ['error', 'never'], // 在数组括号内强制实现一致的间距
+    'require-atomic-updates': 'off', // await 不允许由于使用or而导致竞争条件的分配 yield
   }
 };
