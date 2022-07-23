@@ -4,7 +4,7 @@
  * @Author: hzf
  * @Date: 2022-03-29 13:43:53
  * @LastEditors: hzf
- * @LastEditTime: 2022-06-24 14:19:46
+ * @LastEditTime: 2022-07-21 19:37:55
  */
 module.exports = {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-recess-order'],
@@ -51,6 +51,9 @@ module.exports = {
     }],
     'value-keyword-case': ['lower', {
       ignoreFunctions: ['v-bind'],
+    }],
+    'selector-type-no-unknown': [true, {
+      ignoreTypes: ['page'],
     }],
   }
 };

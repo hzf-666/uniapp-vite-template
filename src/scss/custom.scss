@@ -95,23 +95,23 @@ page {
 }
 
 .as_s {
-  align-items: stretch;
+  align-self: stretch;
 }
 
 .as_b {
-  align-items: baseline;
+  align-self: baseline;
 }
 
 .as_fs {
-  align-items: flex-start;
+  align-self: flex-start;
 }
 
 .as_c {
-  align-items: center;
+  align-self: center;
 }
 
 .as_fe {
-  align-items: flex-end;
+  align-self: flex-end;
 }
 
 .ac_fs {
